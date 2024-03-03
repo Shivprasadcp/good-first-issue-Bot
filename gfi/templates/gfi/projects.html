@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good First Issue</title>
+</head>
+<body>
+    <h1>Good First Issue</h1>
+    <ul>
+        {% for project in projects %}
+            <li>
+                {% comment %} <h2>{{ project.name }}</h2> {% endcomment %}
+                <h2><a href="{% url 'gfi:repository_details' username=project.owner.login repo_name=project.name %}">{{ project.name }}</a></h2>
+                <p>Description: {{ project.description }}</p>
+                <p>URL: <a href="{{ project.html_url }}">{{ project.html_url }}</a></p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
